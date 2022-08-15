@@ -1,5 +1,6 @@
 Inscription / Connexion
 Publier une question
+Afficher les questions publiées par l'utilisateur
 Modifier une question
 Supprimer une question
 Rechercher et afficher les questions

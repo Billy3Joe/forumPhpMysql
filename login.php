@@ -1,8 +1,7 @@
-
+<?php require 'actions/users/loginAction.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php'; ?>
-<?php require 'actions/loginAction.php';?>
 <!-- Affichage du messge de la variable erreur déclarée dans signupAction.php -->
 <?php 
 // On vérifie si la variable $errorMsg existe si c'est le cas, elle sera affichée
