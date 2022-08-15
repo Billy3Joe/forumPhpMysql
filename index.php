@@ -1,1 +1,1 @@
-<?php require('securityAcrion.php') ?>
+<?php require 'actions/signupAction.php';?>
