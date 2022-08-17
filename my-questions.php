@@ -1,6 +1,7 @@
 <?php 
-  require('actions/questions/myQuestionsAction.php');
+  session_start();
   require('actions/users/securityAction.php');
+  require('actions/questions/myQuestionsAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,8 @@
             <div class="card-body">
                 <p class="card-text"><?php echo $question['description']; ?></p>
                 <a href="#" class="btn btn-primary">Accéder à la question</a>
-                <a href="#" class="btn btn-warning">Modifier lla question</a>
+                <a href="edit-question.php?id=<?= $question['id']; ?> " class="btn btn-warning">Modifier la question</a>
+                <a href="actions/questions/deleteQuestionAction.php?id=<?= $question['id']; ?> " class="btn btn-danger"> Supprimer la question</a>
             </div>
           </div>
           <br>
