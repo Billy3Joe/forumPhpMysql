@@ -24,11 +24,13 @@
   <br>
 <!-- Affichage de tous les données de la recherche -->
   <?php 
-    while($question =  $getAllQuestionsSearch->fetch()) {
+    while($question =  $getAllQuestions->fetch()) {
   ?>
   <div class="card">
     <div class = "card-header">
-      <?= $question['titre'];?>
+      <a href="article.php?id=<?= $question['id'];?>">
+        <?= $question['titre'];?>
+      </a>
     </div>
     <div class="card-body">
       <?= $question['description'];?>

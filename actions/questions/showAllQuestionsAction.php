@@ -12,6 +12,6 @@
     $usersSearch = $_GET['search'];
 
     //Récupérons toutes les questions correspondantes à la recherche de l'utilisateur (en fonction du titre)
-    $getAllQuestionsSearch = $bdd->query('SELECT id, id_auteur, titre, description, pseudo_auteur, date_publication FROM questions WHERE titre LIKE "%"'.$usersSearch.'%" ORDER BY id DESC');
+    $getAllQuestions = $bdd->query('SELECT id, id_auteur, titre, description, pseudo_auteur, date_publication FROM questions WHERE titre LIKE "%"'.$usersSearch.'%" ORDER BY id DESC');
  }
 ?>

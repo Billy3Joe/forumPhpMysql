@@ -21,8 +21,8 @@
        if ($checkIfQuestionExists->rowCount() > 0) {
 
             //Vérifier si l'utilisateur qui essaie de supprimer la question est l'auteur de la question
-            $usersInfos = $checkIfQuestionExists->fetch(); 
-            if ($usersInfos['id_auteur'] == $_SESSION['id']) {
+            $questionsInfos = $checkIfQuestionExists->fetch(); 
+            if ($questionsInfos['id_auteur'] == $_SESSION['id']) {
 
                 // Requête de suppréssion de la question
                 $deleteThisQuestion = $bdd->prepare('DELETE FROM questions WHERE id = ?');
