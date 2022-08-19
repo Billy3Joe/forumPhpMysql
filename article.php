@@ -27,7 +27,7 @@
       <hr>
       <p><?= $question_content;?></p>
       <hr>
-      <small><?= $question_pseudo_author. ' ' .$question_publication_date;?></small>
+      <small><?= '<a href="profile.php?id='.$question_id_author.'" style = "text-decoration:none;">'. $question_pseudo_author. '</a> ' .$question_publication_date;?></small>
     </section>
     <br>
     <section class="show-answers">
@@ -44,7 +44,9 @@
         ?>
             <div class="card">
               <div class="card-header">
+              <a href="profile.php?id=<?= $answer['id_auteur'] ?>" style = "text-decoration: none;">
                 <?= $answer['pseudo_auteur']; ?>
+              </a>
                 <br>
                 <?= $answer['contenu']; ?>
               </div>

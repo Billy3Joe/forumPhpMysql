@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require 'actions/questions/showAllQuestionsAction.php';
+  require ('actions/questions/showAllQuestionsAction.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@
     while($question =  $getAllQuestions->fetch()) {
   ?>
   <div class="card">
-    <div class = "card-header">
+    <div class="card-header">
       <a href="article.php?id=<?= $question['id'];?>">
         <?= $question['titre'];?>
       </a>
@@ -35,8 +35,12 @@
     <div class="card-body">
       <?= $question['description'];?>
     </div>
-    <div class="scard-footer">
-      Publier par  <?= $question['pseudo_auteur'];?> le  <?= $question['date_publication'];?>
+    <div class="card-footer">
+      Publier par 
+      <a href="profile.php?id=<?= $question['id_auteur'] ?>" style="text-decoration:none;">
+            <?= $question['pseudo_auteur'];?> 
+      </a> 
+         le <?= $question['date_publication'];?>
     </div>
   </div>
   <br>
