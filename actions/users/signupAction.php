@@ -1,6 +1,6 @@
 <?php 
  session_start();
- require 'actions/database.php';
+ require ('actions/database.php');
  ?>
 <?php
 //Validation du formulaire
@@ -22,24 +22,25 @@ if (isset($_POST['validate'])) {
        //Si l'utilisateur n'existe pas ou n'est pas encore inscrit 
        if ($checkIfUserAlreadyExists->rowCount() == 0) {
        //Insérons l'utilisateur n'existe pas ou n'est pas encore dans la bd
-       $insertUserOnWebsite = $bdd->prepare('INSERT INTO users (pseudo, nom, prenom, mdp) VALUES(?, ?, ?, ?)');
+       $insertUserOnWebsite = $bdd->prepare('INSERT INTO users (pseudo, nom, prenom, mdp)VALUES(?, ?, ?, ?)');
        $insertUserOnWebsite->execute(array($user_pseudo, $user_lastname, $user_firstname, $user_password));
 
+        //Réccupérerons les données de l'utilisateur qui est inscrit
+        $getInfosOfThisUserReq = $bdd->prepare('SELECT id, pseudo, nom, prenom FROM users WHERE nom = ? AND prenom = ? AND pseudo = ?');
+        $getInfosOfThisUserReq->execute(array($user_lastname, $user_firstname, $user_pseudo));
+        $usersInfos = $getInfosOfThisUserReq->fetch(); 
+        
+       //Authentifions l'utilisateur sur notre site et récupérer également ses données dans des variables globales globales sessions. On va utiliser des SESSIONS
+        $_SESSION['auth'] = true;
+        $_SESSION['id'] = $usersInfos['id'];
+        $_SESSION['lastname'] = $usersInfos['nom'];
+        $_SESSION['firstname'] = $usersInfos['prenom'];
+        $_SESSION['pseudo'] = $usersInfos['pseudo'];
+ 
+        //Rédirigeons l'utilisateur vers la page d'accueil index.php
+        header('Location: index.php');
 
-       //Réccupérerons les données de l'utilisateur qui est inscrit
-       $getInfoOfThisUserReq = $bdd->prepare('SELECT id, pseudo, nom, prenom FROM users WHERE nom =? AND prenom =? AND pseudo =?');
-       $getInfoOfThisUserReq->execute(array($user_pseudo, $user_lastname, $user_firstname));
-       $userInfos = $getInfoOfThisUserReq->fetch(); 
-       
-      //Authentifions l'utilisateur sur notre site et récupérer également ses données dans des variables globales globales sessions. On va utiliser des SESSIONS
-       $_SESSION['auth'] = true;
-       $_SESSION['id'] = $userInfos['id'];
-       $_SESSION['pseudo'] = $userInfos['pseudo'];
-       $_SESSION['lastname'] = $userInfos['nom'];
-       $_SESSION['firstname'] = $userInfos['prenom'];
-
-       //Rédirigeons l'uta vers la page index.php
-       header('Location: index.php');
+      
        }else {
         //Si l'utilisateur existe déjà,on affiche un message d'erreur
         $errorMsg = "L'utilisateur exite déjà sur le site...";

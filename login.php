@@ -2,33 +2,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php'; ?>
-
-<div class="fullcontent">
-    <div class="headings">
-        <h1>FORUM GENERAL POUR TOUS</h1>
-        <h2>QUSTIONS <br> ET <br> REPONSES</h2>
+<!-- Affichage du messge de la variable erreur déclarée dans signupAction.php -->
+<?php 
+// On vérifie si la variable $errorMsg existe si c'est le cas, elle sera affichée
+if (isset($errorMsg)) {
+ echo '<p>'.$errorMsg.'</p>';
+}
+?>
+<body>
+    <br><br>
+    <form class="container" method="POST">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Pseudo</label>
+        <input type="text" class="form-control" name="pseudo">
     </div>
-    <div class="formbox">
-        <h3>SIGNIN</h3>
-        <form id="form" action="" method="POST">
-            <label for="">Pseudo</label>
-            <input type="text" name="pseudo" placeholder="pseudo" class="asd"/>
-            <label for="">Password</label>
-            <input type="password" id="" name="password" placeholder="password" class="asd"/>
-            <button id="btn" type="submit" name="validate" class="mainbox">Signin</button>
-            <input id="btn" type="reset" value="Reset" class="mainbox">
-            <label for="">Nouveau membre?</label>
-            <a href="signup.php" class="mainbox">Inscrit toi d'abord</a>
-             <!-- Affichage du message de la variable erreur déclarée dans signupAction.php -->
-            <?php 
-              // On vérifie si la variable $errorMsg existe si c'est le cas, elle sera affichée
-              if (isset($errorMsg)) {
-              echo '<p style="color:red;">'.$errorMsg.'</p>';
-            }
-            ?>
-        </form>	
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password">
     </div>
-</div>
-   
+    <button type="submit" class="btn btn-primary" name="validate">Se connecter</button>
+    <button type="reset" class="btn btn-primary">Réinitialiser</button>
+    <br><br>
+    <a href="signup.php"><p>Je n'ai pas de compte, je m'inscris</p></a>
+    </form>
 </body>
 </html>

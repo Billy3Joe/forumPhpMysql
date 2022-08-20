@@ -1,14 +1,8 @@
-<?php require 'actions/users/signupAction.php';?>
+<?php require ('actions/users/signupAction.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php'; ?>
 <!-- Affichage du messge de la variable erreur déclarée dans signupAction.php -->
-<?php 
-// On vérifie si la variable $errorMsg existe si c'est le cas, elle sera affichée
-if (isset($errorMsg)) {
- echo '<p>'.$errorMsg.'</p>';
-}
-?>
 <body>
     <br><br>
     <form class="container" method="POST">
@@ -32,6 +26,12 @@ if (isset($errorMsg)) {
         <button type="reset" class="btn btn-primary">Réinitialiser</button>
         <br><br>
         <a href="login.php"><p>J'ai déjà un compte , je me connecte</p></a>
+        <?php 
+            // On vérifie si la variable $errorMsg existe si c'est le cas, elle sera affichée
+            if (isset($errorMsg)) {
+            echo '<p style="color:red;">'.$errorMsg.'</p>';
+            }
+        ?>
     </form>
 </body>
 </html>
