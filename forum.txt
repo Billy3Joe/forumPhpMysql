@@ -5,4 +5,4 @@ Modifier une question
 Supprimer une question
 Rechercher et afficher les questions
 Repondre à une question
-Afficher le profil d'un utilisateur (avec ses publication)
+Afficher le profil d'un utilisateur (avec ses publications).

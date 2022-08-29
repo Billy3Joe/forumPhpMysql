@@ -15,11 +15,18 @@
         <li class="nav-item">
           <a class="nav-link" href="my-questions.php">Mes question</a>
         </li>
-        <li class="nav-item">
+        <?php 
+         if (isset($_SESSION['auth'])) {
+        ?>
+          <li class="nav-item">
           <a class="nav-link" href="profile.php?id=<?= $_SESSION['id']; ?>">Mon profil</a>
         </li>
+        <?php
+        }
+        ?>
+       
         <?php 
-        if (isset($_SESSION['auth'])) {
+         if (isset($_SESSION['auth'])) {
         ?>
          <li class="nav-item">
           <a class="nav-link" href="actions/users/logoutAction.php">Se déconnecter</a>

@@ -6,7 +6,7 @@
 <?php 
 // On vérifie si la variable $errorMsg existe si c'est le cas, elle sera affichée
 if (isset($errorMsg)) {
- echo '<p>'.$errorMsg.'</p>';
+ echo '<p style="color:red;">'.$errorMsg.'</p>';
 }
 ?>
 <body>
