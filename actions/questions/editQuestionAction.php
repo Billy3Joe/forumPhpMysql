@@ -27,7 +27,7 @@ if (isset($_GET['id']) AND !empty($_GET['id'])) {
        
        if(isset($_POST['validate'])) {
         //Récupérons tous les valeurs qui ont été saisie par l'utilisateur
-        $new_question_title = htmlspecialchars($_POST['titre']);
+        $new_question_title = htmlspecialchars($_POST['title']);
         $new_question_description = nl2br(htmlspecialchars($_POST['description']));
         $new_question_content = nl2br(htmlspecialchars($_POST['content']));
        //Effectuons une requête de modification maintenant au niveau de notre BD

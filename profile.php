@@ -19,10 +19,18 @@
         ?>
                 <div class="card">
                     <div class="card-body">
-                        <h4>@<?= $user_pseudo; ?></h4>
-                        <p><?= $user_lastname . ' ' . $user_firstname ?></p>
+                        <div style="display: flex; gap:10px;">
+                          <h3>PEUDO:</h3>
+                          <h3 style="color:#888;">@<?= $user_pseudo; ?></h3>
+                        </div>
+                        <br>
+                        <div style="display: flex; gap:10px;">
+                          <h3>NOM & PRENOM: </h3>
+                          <h3 style="color:#888;"><?= $user_lastname . ' ' . $user_firstname ?></h3>
+                        </div>
                     </div>
                     <br>
+                    
                     <?php
                     while ($question = $getHisQuestions->fetch()) {
                     ?>
@@ -45,6 +53,30 @@
         <?php 
             }
         ?>
+
+        <h1>TOUS LES UTILISTEURS</h1>
+        <hr>
+        <!-- Affichage de tous les données de la recherche -->
+        <?php require ('actions/users/showAllUsersAction.php'); ?>
+        <?php 
+          while($user = $getAllUsers->fetch()) {
+        ?>
+        <div class="card">
+          <div class="card-header">
+            <a href="#">
+              <?= $user['pseudo'];?>
+            </a>
+          </div>
+          <div class="card-body">
+            <?= $user['nom'];?>  <?= $user['prenom'];?>
+          </div>
+        </div>
+        <?php
+          }
+        ?>
+        <br>
+        <br>
+      </div>
     </div>
   <body>
 </html>
